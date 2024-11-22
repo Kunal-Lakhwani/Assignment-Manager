@@ -1,0 +1,66 @@
+﻿@page
+@model Assignment_Management.Pages.Student_Details.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Student[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student[0].MiddleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student[0].MailID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student[0].salt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student[0].hash)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Student) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MiddleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MailID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.salt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hash)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.PRN">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.PRN">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.PRN">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

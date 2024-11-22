@@ -1,0 +1,74 @@
+﻿@page
+@model Assignment_Management.Pages.Admin.VerifyStudentsModel
+@{
+}
+<h1>Add a CSV file for StagedVerifications details</h1>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="StudCSV">
+            Enter file:
+        </label>
+        <input type="file" name="StudCSV" value="" />
+    </div>
+    <input type="submit" name="SubmitBtn" value="Upload" asp-page-handler="UploadCSV" />
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StagedVerifications[0].PRN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StagedVerifications[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StagedVerifications[0].MiddleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StagedVerifications[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StagedVerifications[0].MailID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StagedVerifications[0].salt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StagedVerifications[0].hash)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.StagedVerifications)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PRN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MiddleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MailID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.salt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.hash)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<form method="post" enctype="multipart/form-data">
+    <input type="submit" name="VerifySubmit" value="Verify Users" asp-page-handler="SaveData" />
+</form>
